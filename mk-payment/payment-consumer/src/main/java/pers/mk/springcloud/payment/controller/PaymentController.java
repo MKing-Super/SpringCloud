@@ -1,10 +1,11 @@
 package pers.mk.springcloud.payment.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import pers.mk.springcloud.payment.common.CommonResult;
+import pers.mk.springcloud.payment.model.Payment;
 
 import javax.annotation.Resource;
 
