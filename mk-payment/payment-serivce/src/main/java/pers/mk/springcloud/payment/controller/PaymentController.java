@@ -1,62 +1,63 @@
-			hooks = jQuery._queueHooks( elem, type ),
-			next = function() {
-				jQuery.dequeue( elem, type );
-			};
+package pers.mk.springcloud.payment.controller;
 
-		// If the fx queue is dequeued, always remove the progress sentinel
-		if ( fn === "inprogress" ) {
-			fn = queue.shift();
-			startLength--;
-		}
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.*;
 
-		if ( fn ) {
+import javax.annotation.Resource;
+import java.util.List;
 
-			// Add a progress sentinel to prevent the fx queue from being
-			// automatically dequeued
-			if ( type === "fx" ) {
-				queue.unshift( "inprogress" );
-			}
+@RestController
+@Slf4j
+public class PaymentController {
+    @Resource
+    private PaymentService paymentService;
 
-			// clear up the last queue stop function
-			delete hooks.stop;
-			fn.call( elem, next, hooks );
-		}
+    //对于注册进eureka里面的微服务，可以通过服务发现来获得该服务的信息
+    @Resource
+    private DiscoveryClient discoveryClient;
 
-		if ( !startLength && hooks ) {
-			hooks.empty.fire();
-		}
-	},
+    //获取配置文件yml中的端口信息
+    @Value("${server.port}")
+    private String serverPort;
 
-	// not intended for public consumption - generates a queueHooks object, or returns the current one
-	_queueHooks: function( elem, type ) {
-		var key = type + "queueHooks";
-		return jQuery._data( elem, key ) || jQuery._data( elem, key, {
-			empty: jQuery.Callbacks("once memory").add(function() {
-				jQuery.removeData( elem, type + "queue", true );
-				jQuery.removeData( elem, key, true );
-			})
-		});
-	}
-});
+    @PostMapping(value = "/payment/create")
+    public CommonResult create(@RequestBody Payment payment){
+        int result = paymentService.create(payment);
+        log.info("***插入结果");
+        if (result > 0){
+            return new CommonResult(200,"插入成功，serverPort：" + serverPort,result);
+        }else {
+            return new CommonResult(444,"插入失败",null);
+        }
+    }
 
-jQuery.fn.extend({
-	queue: function( type, data ) {
-		var setter = 2;
+    @GetMapping(value = "/payment/get/{id}")
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
+        Payment payment = paymentService.getPaymentById(id);
+        log.info("***查看结果：" + payment );
+        int a = 10/2;
+        if(payment != null)
+        {
+            return new CommonResult(200,"查询成功，serverPort：" + serverPort,payment);
+        }else{
+            return new CommonResult(444,"没有对应记录,查询ID: "+id,null);
+        }
+    }
 
-		if ( typeof type !== "string" ) {
-			data = type;
-			type = "fx";
-			setter--;
-		}
+    @GetMapping(value = "/payment/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        for (String element : services) {
+            log.info("*****element: "+element);
+        }
 
-		if ( arguments.length < setter ) {
-			return jQuery.queue( this[0], type );
-		}
-
-		return data === undefined ?
-			this :
-			this.each(function() {
-				var queue = jQuery.queue( this, type, data );
-
-				// ensure a hooks for this queue
-				jQuery._queueHooks
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for (ServiceInstance instance : instances) {
+            log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
+        }
+        return this.discoveryClient;
+    }
+}
