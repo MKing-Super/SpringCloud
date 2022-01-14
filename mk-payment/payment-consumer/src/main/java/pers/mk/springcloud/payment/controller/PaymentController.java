@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 
 @RestController
-@Slf4j
 public class PaymentController {
     //    private static final String PAYMENT_UTL = "http://127.0.0.1:8001/";
     private static final String PAYMENT_UTL = "http://CLOUD-PAYMENT-SERVICE";
