@@ -1,5 +1,7 @@
 package pers.mk.springcloud.payment.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +13,9 @@ import javax.annotation.Resource;
 
 @RestController
 public class PaymentController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentController.class);
+
+
     //    private static final String PAYMENT_UTL = "http://127.0.0.1:8001/";
     private static final String PAYMENT_UTL = "http://CLOUD-PAYMENT-SERVICE";
     @Resource

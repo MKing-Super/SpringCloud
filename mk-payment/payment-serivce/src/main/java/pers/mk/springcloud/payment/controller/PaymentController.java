@@ -1,6 +1,8 @@
 package pers.mk.springcloud.payment.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -17,8 +19,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Slf4j
 public class PaymentController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentController.class);
+
     @Resource
     private PaymentService paymentService;
 
@@ -33,7 +36,7 @@ public class PaymentController {
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
-        log.info("***插入结果");
+        LOGGER.info("***插入结果");
         if (result > 0){
             return new CommonResult(200,"插入成功，serverPort：" + serverPort,result);
         }else {
@@ -44,7 +47,7 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
-        log.info("***查看结果：" + payment );
+        LOGGER.info("***查看结果：" + payment );
         int a = 10/2;
         if(payment != null)
         {
@@ -58,12 +61,12 @@ public class PaymentController {
     public Object discovery() {
         List<String> services = discoveryClient.getServices();
         for (String element : services) {
-            log.info("*****element: "+element);
+            LOGGER.info("*****element: "+element);
         }
 
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
         for (ServiceInstance instance : instances) {
-            log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
+            LOGGER.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
         }
         return this.discoveryClient;
     }
