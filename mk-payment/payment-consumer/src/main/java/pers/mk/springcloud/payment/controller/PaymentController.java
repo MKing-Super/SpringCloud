@@ -17,7 +17,7 @@ public class PaymentController {
 
 
     //    private static final String PAYMENT_UTL = "http://127.0.0.1:8001/";
-    private static final String PAYMENT_UTL = "http://CLOUD-PAYMENT-SERVICE";
+    private static final String PAYMENT_UTL = "http://PAYMENT-SERVICE";
     @Resource
     private RestTemplate restTemplate;
 
@@ -28,6 +28,7 @@ public class PaymentController {
 
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
-        return restTemplate.getForObject(PAYMENT_UTL + "/payment/get/" + id,CommonResult.class);
+        CommonResult forObject = restTemplate.getForObject(PAYMENT_UTL + "/payment/get/" + id, CommonResult.class);
+        return forObject;
     }
 }
