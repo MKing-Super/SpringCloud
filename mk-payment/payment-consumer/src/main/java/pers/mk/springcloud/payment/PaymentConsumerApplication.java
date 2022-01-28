@@ -11,7 +11,7 @@ import pers.mk.springcloud.payment.controller.PaymentController;
 @EnableEurekaClient
 public class PaymentConsumerApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentConsumerApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(PaymentConsumerApplication.class);
