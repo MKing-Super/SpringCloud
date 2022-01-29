@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
 
-    @RequestMapping("/hello")
-    public String test(){
-        return "hello";
-    }
+//    @RequestMapping("/hello")
+//    public String test(){
+//        return "/payment/hello";
+//    }
 
     @RequestMapping("/consumer")
     public String consumer(){

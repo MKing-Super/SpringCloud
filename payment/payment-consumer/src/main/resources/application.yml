@@ -1,8 +1,18 @@
 server:
-  port: 80
+  port: 8080
 spring:
   application:
     name: cloud-consumer-order80
+  mvc:
+    static-path-pattern: /**
+    thymeleaf:
+      cache: false
+      encoding: utf-8
+      mode: LEGACYHTML5
+      prefix: classpath:/templates/
+      servlet:
+        content-type: text/html
+      suffix: .html
 
 eureka:
   client:
@@ -23,4 +33,5 @@ ribbon:
 logging:
   level:
     # 选择具体接口的方法 的日志输出 级别为debug
-    com.wxh.springcloud.service.PaymentFeignService: debug
+    pers.mk.springcloud.service.PaymentFeignService: debug
+
