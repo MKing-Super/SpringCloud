@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: cloud-consumer-order80
+    name: payment-consumer
   mvc:
     static-path-pattern: /**
     thymeleaf:
@@ -23,6 +23,9 @@ eureka:
     service-url:
       #      defaultZone:  http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
       defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    instance-id: consumer8080
+    prefer-ip-address: true
 
 ribbon:
   # 建立连接所用时间

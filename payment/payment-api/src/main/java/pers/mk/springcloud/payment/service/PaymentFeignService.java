@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import pers.mk.springcloud.payment.model.CommonResult;
 
 @Component
-@FeignClient(value = "CLOUD-PAYMENT-SERVICE")
+@FeignClient(value = "PAYMENT-SERVICE")
 public interface PaymentFeignService {
     @GetMapping("/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id")Long id);
