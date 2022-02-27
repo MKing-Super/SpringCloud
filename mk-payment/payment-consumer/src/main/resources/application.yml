@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: payment-consumer
+    name: cloud-payment-consumer
 
 eureka:
   client:
@@ -15,10 +15,16 @@ eureka:
       defaultZone: http://127.0.0.1:7001/eureka
   instance:
     instance-id: payment-consumer8080
-    prefer-ip-address: true
+#    prefer-ip-address: true
     #心跳检测与续约时间
     #开发时没置小些，保证服务关闭后注册中心能即使剔除服务
     #Eureka客户端向服务端发送心跳的时间间隔，单位为秒(默认是30秒)
-    lease-renewal-interval-in-seconds: 1
+#    lease-renewal-interval-in-seconds: 1
     #Eureka服务端在收到最后一次心跳后等待时间上限，单位为秒(默认是90秒)，超时将剔除服务
-    lease-expiration-duration-in-seconds: 2
+#    lease-expiration-duration-in-seconds: 2
+#设置feign客户端超时时间(OpenFeign默认支持ribbon)
+ribbon:
+  #指的是建立连接所用的时间，适用于网络状况正常的情况下,两端连接所用的时间
+  ReadTimeout: 5000
+  #指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000

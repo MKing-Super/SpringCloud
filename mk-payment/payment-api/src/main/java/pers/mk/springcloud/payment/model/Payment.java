@@ -19,4 +19,12 @@ public class Payment {
     public void setSerial(String serial) {
         this.serial = serial;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", serial='" + serial + '\'' +
+                '}';
+    }
 }

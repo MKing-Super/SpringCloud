@@ -33,25 +33,13 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-    @PostMapping(value = "/payment/create")
-    public CommonResult create(@RequestBody Payment payment){
-        int result = paymentService.create(payment);
-        LOGGER.info("***插入结果");
-        if (result > 0){
-            return new CommonResult(200,"插入成功，serverPort：" + serverPort,result);
-        }else {
-            return new CommonResult(444,"插入失败",null);
-        }
-    }
-
     @GetMapping(value = "/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
-        LOGGER.info("***查看结果：" + payment );
-        int a = 10/2;
+        LOGGER.info("***查看结果：" + payment.toString() );
         if(payment != null)
         {
-            return new CommonResult(200,"查询成功，serverPort：" + serverPort,payment);
+            return new CommonResult(200,"查询成功，serverPort：","");
         }else{
             return new CommonResult(444,"没有对应记录,查询ID: "+id,null);
         }

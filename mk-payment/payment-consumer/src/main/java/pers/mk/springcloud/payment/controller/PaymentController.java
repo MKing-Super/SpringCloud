@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import pers.mk.springcloud.payment.common.CommonResult;
 import pers.mk.springcloud.payment.model.Payment;
+import pers.mk.springcloud.payment.service.PaymentFeignService;
 
 import javax.annotation.Resource;
 
@@ -15,19 +16,12 @@ import javax.annotation.Resource;
 public class PaymentController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentController.class);
 
-
-    //    private static final String PAYMENT_UTL = "http://127.0.0.1:8001/";
-    private static final String PAYMENT_UTL = "http://CLOUD-PAYMENT-SERVICE";
     @Resource
-    private RestTemplate restTemplate;
-
-    @GetMapping("/consumer/payment/create")
-    public CommonResult<Payment> create(Payment payment){
-        return restTemplate.postForObject(PAYMENT_UTL + "/payment/create",payment,CommonResult.class);
-    }
+    private PaymentFeignService paymentFeignService;
 
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
-        return restTemplate.getForObject(PAYMENT_UTL + "/payment/get/" + id,CommonResult.class);
+        CommonResult<Payment> paymentById = paymentFeignService.getPaymentById(id);
+        return paymentById;
     }
 }
