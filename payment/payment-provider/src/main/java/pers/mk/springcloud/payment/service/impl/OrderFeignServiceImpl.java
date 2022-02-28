@@ -8,7 +8,7 @@ import pers.mk.springcloud.payment.service.OrderFeignService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Description: TODO
+ * @Description: 订单实现类
  * @Author: kun.ma
  * @Date: 2022/2/28 16:56
  */
