@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
- * @Description: TODO
+ * @Description: 提供者启动类
  * @Author: kun.ma
  * @Date: 2022/1/28 15:42
  */
