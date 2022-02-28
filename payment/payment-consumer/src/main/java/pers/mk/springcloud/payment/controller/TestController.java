@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pers.mk.springcloud.payment.model.CommonResult;
 import pers.mk.springcloud.payment.model.Payment;
+import pers.mk.springcloud.payment.service.PaymentFeignService;
 
 import javax.annotation.Resource;
 
@@ -14,8 +15,10 @@ import javax.annotation.Resource;
 public class TestController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
 
+    @Resource
+    private PaymentFeignService paymentFeignService;
     @Autowired
-    private OrderFeignCotroller orderFeignCotroller;
+    private OrderFeignController orderFeignController;
 
 //    @RequestMapping("/hello")
 //    public String test(){
@@ -25,8 +28,10 @@ public class TestController {
     @RequestMapping("/consumer")
     public String consumer(){
         Long aLong = new Long(1);
-        CommonResult<Payment> paymentById = orderFeignCotroller.getPaymentById(aLong);
+        CommonResult<Payment> paymentById = paymentFeignService.getPaymentById(aLong);
         System.out.println(paymentById);
+        CommonResult<Payment> paymentById1 = orderFeignController.getPaymentById(aLong);
+        System.out.println(paymentById1);
         return "/index";
     }
 }

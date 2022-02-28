@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 
 @RestController
 @Slf4j
-public class OrderFeignCotroller {
+public class OrderFeignController {
     @Resource
     private PaymentFeignService paymentFeignService;
 
