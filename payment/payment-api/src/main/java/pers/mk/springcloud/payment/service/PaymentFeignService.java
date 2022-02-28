@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pers.mk.springcloud.payment.model.CommonResult;
 
 @Component
-@RestController
+@RestController// @Controller + @ResponseBody
 @FeignClient(value = "PAYMENT-SERVICE")
 public interface PaymentFeignService {
     @GetMapping("/payment/get/{id}")

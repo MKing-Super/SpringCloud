@@ -1,5 +1,6 @@
 package pers.mk.springcloud.payment.controller;
 
+import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class TestController {
         System.out.println(paymentById);
         CommonResult<Payment> paymentById1 = orderFeignController.getPaymentById(aLong);
         System.out.println(paymentById1);
-        model.addAttribute("paymentById",paymentById.getData());
+        model.addAttribute("paymentById",JSON.toJSONString(paymentById));
         return "/index";
     }
 }
