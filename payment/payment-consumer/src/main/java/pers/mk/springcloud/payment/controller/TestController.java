@@ -34,7 +34,9 @@ public class TestController {
         System.out.println(paymentById);
         CommonResult<Payment> paymentById1 = orderFeignController.getPaymentById(aLong);
         System.out.println(paymentById1);
+        String timeout = paymentFeignService.timeout();
         model.addAttribute("paymentById",JSON.toJSONString(paymentById));
+        model.addAttribute("timeout",timeout);
         return "/index";
     }
 }
