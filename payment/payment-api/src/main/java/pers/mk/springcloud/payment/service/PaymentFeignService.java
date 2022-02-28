@@ -15,7 +15,4 @@ import pers.mk.springcloud.payment.model.CommonResult;
 public interface PaymentFeignService {
     @GetMapping("/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id")Long id);
-
-    @RequestMapping(value = "/timeout",method = RequestMethod.GET)
-    public String timeout();
 }

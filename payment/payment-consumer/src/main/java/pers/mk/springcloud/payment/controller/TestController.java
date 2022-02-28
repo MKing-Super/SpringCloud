@@ -19,8 +19,6 @@ public class TestController {
 
     @Resource
     private PaymentFeignService paymentFeignService;
-    @Autowired
-    private OrderFeignController orderFeignController;
 
 //    @RequestMapping("/hello")
 //    public String test(){
@@ -32,11 +30,7 @@ public class TestController {
         Long aLong = new Long(1);
         CommonResult<Payment> paymentById = paymentFeignService.getPaymentById(aLong);
         System.out.println(paymentById);
-        CommonResult<Payment> paymentById1 = orderFeignController.getPaymentById(aLong);
-        System.out.println(paymentById1);
-        String timeout = paymentFeignService.timeout();
         model.addAttribute("paymentById",JSON.toJSONString(paymentById));
-        model.addAttribute("timeout",timeout);
         return "/index";
     }
 }
