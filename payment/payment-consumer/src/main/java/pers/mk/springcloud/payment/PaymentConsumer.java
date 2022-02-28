@@ -12,8 +12,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableFeignClients
-public class ConsumerMain {
+public class PaymentConsumer {
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerMain.class,args);
+        SpringApplication.run(PaymentConsumer.class,args);
     }
 }
