@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pers.mk.springcloud.payment.model.CommonResult;
 import pers.mk.springcloud.payment.model.Payment;
@@ -26,12 +27,13 @@ public class TestController {
 //    }
 
     @RequestMapping("/consumer")
-    public String consumer(){
+    public String consumer(Model model){
         Long aLong = new Long(1);
         CommonResult<Payment> paymentById = paymentFeignService.getPaymentById(aLong);
         System.out.println(paymentById);
         CommonResult<Payment> paymentById1 = orderFeignController.getPaymentById(aLong);
         System.out.println(paymentById1);
+        model.addAttribute("paymentById",paymentById.getData());
         return "/index";
     }
 }
