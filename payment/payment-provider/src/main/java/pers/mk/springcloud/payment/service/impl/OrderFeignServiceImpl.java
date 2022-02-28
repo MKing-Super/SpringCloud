@@ -1,19 +1,21 @@
-package pers.mk.springcloud.payment.controller;
+package pers.mk.springcloud.payment.service.impl;
 
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pers.mk.springcloud.payment.service.OrderFeignService;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * @Description: TODO
  * @Author: kun.ma
- * @Date: 2022/2/28 16:23
+ * @Date: 2022/2/28 16:56
  */
+@Service
 @RestController
-@Slf4j
-public class OrderController {
+public class OrderFeignServiceImpl implements OrderFeignService {
+    @Override
     @GetMapping("/order/timeout")
     public String timeout(){
         try {
