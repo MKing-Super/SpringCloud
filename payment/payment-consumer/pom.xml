@@ -17,16 +17,12 @@
     </properties>
 
     <dependencies>
-<<<<<<< HEAD:mk-payment/payment-consumer/pom.xml
         <!--openfeign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <!--eureka-client-->
-=======
         <!--引入自己的公共api-->
->>>>>>> b4ff8ce2df76f8e583dfb655ae7af14c52d7d403:payment/payment-consumer/pom.xml
         <dependency>
             <groupId>pers.mk.springcloud</groupId>
             <artifactId>payment-api</artifactId>
@@ -42,7 +38,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-<<<<<<< HEAD:mk-payment/payment-consumer/pom.xml
         <!-- 工具类 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,9 +45,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-=======
         <!-- model注解 -->
->>>>>>> b4ff8ce2df76f8e583dfb655ae7af14c52d7d403:payment/payment-consumer/pom.xml
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -84,8 +77,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-<<<<<<< HEAD:mk-payment/payment-consumer/pom.xml
-
 
         <!-- 引入自己的jar包 -->
         <dependency>
@@ -95,8 +86,6 @@
             <scope>compile</scope>
         </dependency>
 
-=======
->>>>>>> b4ff8ce2df76f8e583dfb655ae7af14c52d7d403:payment/payment-consumer/pom.xml
     </dependencies>
 
 </project>

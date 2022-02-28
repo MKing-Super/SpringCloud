@@ -18,6 +18,7 @@ public class OrderFeignCotroller {
     private PaymentFeignService paymentFeignService;
 
     @GetMapping("/consumer/payment/get/{id}")
+    //占位符映射
     public CommonResult<Payment> getPaymentById(@PathVariable Long id){
         return paymentFeignService.getPaymentById(id);
     }
