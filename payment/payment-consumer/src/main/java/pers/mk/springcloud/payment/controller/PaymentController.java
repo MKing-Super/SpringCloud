@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pers.mk.springcloud.payment.model.CommonResult;
 import pers.mk.springcloud.payment.model.Payment;
+import pers.mk.springcloud.payment.service.OrderFeignService;
 import pers.mk.springcloud.payment.service.PaymentFeignService;
 
 import javax.annotation.Resource;
@@ -18,6 +19,8 @@ public class PaymentController {
 
     @Resource
     private PaymentFeignService paymentFeignService;
+    @Resource
+    private OrderFeignService orderFeignService;
 
 
     @RequestMapping("/consumer")
@@ -25,7 +28,9 @@ public class PaymentController {
         Long aLong = new Long(1);
         CommonResult<Payment> paymentById = paymentFeignService.getPaymentById(aLong);
         LOGGER.info(paymentById.toString());
+        String timeout = orderFeignService.timeout();
         model.addAttribute("paymentById",JSON.toJSONString(paymentById));
+        model.addAttribute("timeout",timeout);
         return "/index";
     }
 }
