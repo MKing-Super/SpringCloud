@@ -9,7 +9,7 @@
     </modules>
     <groupId>pers.mk.springcloud</groupId>
     <artifactId>mk-user</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>mk-user</name>
     <description>mk-user</description>
 
@@ -94,7 +94,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>cloud2020</finalName>
+        <finalName>cloud2022</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

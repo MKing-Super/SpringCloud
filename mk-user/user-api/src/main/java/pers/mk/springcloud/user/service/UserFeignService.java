@@ -14,7 +14,7 @@ import pers.mk.springcloud.user.model.CommonResult;
  */
 @Component
 @RestController
-@FeignClient(value = "PAYMENT-SERVICE")
+@FeignClient(value = "USER-SERVICE")
 public interface UserFeignService {
     @GetMapping("/user/get/{id}")
     CommonResult getUserById(@PathVariable("id")Integer id);

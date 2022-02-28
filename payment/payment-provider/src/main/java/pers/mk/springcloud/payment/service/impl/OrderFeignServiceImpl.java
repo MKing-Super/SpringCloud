@@ -15,9 +15,12 @@ import java.util.concurrent.TimeUnit;
 @Service
 @RestController
 public class OrderFeignServiceImpl implements OrderFeignService {
+
+
     @Override
     @GetMapping("/order/timeout")
     public String timeout(){
+
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
