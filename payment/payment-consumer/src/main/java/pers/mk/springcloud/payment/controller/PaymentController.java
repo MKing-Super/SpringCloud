@@ -29,6 +29,10 @@ public class PaymentController {
         CommonResult<Payment> paymentById = paymentFeignService.getPaymentById(aLong);
         LOGGER.info(paymentById.toString());
         String timeout = orderFeignService.timeout();
+        CommonResult testpost = paymentFeignService.testpost(new Payment(new Long(1), "666"));
+        LOGGER.info(testpost.toString());
+        CommonResult two = paymentFeignService.two(66, "mkmk12111");
+        LOGGER.info(two.toString());
         model.addAttribute("paymentById",JSON.toJSONString(paymentById));
         model.addAttribute("timeout",timeout);
         return "/index";

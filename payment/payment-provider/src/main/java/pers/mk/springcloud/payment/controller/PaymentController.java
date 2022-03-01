@@ -1,5 +1,6 @@
 package pers.mk.springcloud.payment.controller;
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pers.mk.springcloud.payment.model.CommonResult;
 import pers.mk.springcloud.payment.model.Payment;
@@ -19,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
+@RequestMapping("/payment")
 public class PaymentController {
     @Resource
     private PaymentService paymentService;
@@ -29,7 +32,7 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-    @PostMapping("/payment/create")
+    @PostMapping("/create")
     public CommonResult<Payment> create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
         log.info("*****插入结果："+result);
@@ -41,7 +44,7 @@ public class PaymentController {
         }
     }
 
-    @GetMapping("/payment/get/{id}")
+    @GetMapping("/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id")Long id){
         Payment result = paymentService.getPaymentById(id);
         log.info("*****查询结果："+result);
@@ -55,7 +58,7 @@ public class PaymentController {
         }
     }
 
-    @GetMapping("/payment/discovery")
+    @GetMapping("/discovery")
     public DiscoveryClient discovery(){
         // 得到所有服务名
         List<String> services = discoveryClient.getServices();
@@ -72,9 +75,15 @@ public class PaymentController {
     }
 
     @PostMapping("/testpost")
-    public CommonResult<Payment> testpost(Payment payment){
+    public CommonResult<Payment> testpost(@RequestBody Payment payment){
         payment.setSerial("我是更过后的名字，测试成功");
         return new CommonResult<>(200,"测试成功",payment);
+    }
+
+    @GetMapping("/two")
+    public CommonResult<Payment> two(Integer id,String serial){
+        Payment payment = new Payment(new Long(id), serial);
+        return new CommonResult<Payment>(200,"emm",payment);
     }
 
     @GetMapping("/timeout")
