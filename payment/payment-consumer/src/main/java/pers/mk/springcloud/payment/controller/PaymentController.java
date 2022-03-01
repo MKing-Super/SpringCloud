@@ -41,7 +41,7 @@ public class PaymentController {
         HashMap<String, Object> map = new HashMap<>();
         map.put("payment",payment);
         map.put("order",order);
-        //使用map未入参，传递实例对象无法获取正常的值，get返回null不报错，
+        //使用map未入参，传递实例对象无法获取正常的值，get返回null不报错，post可以传入参（注意json转换问题）
         CommonResult<String> stringCommonResult = paymentFeignService.complexTwo(map);
         LOGGER.info(stringCommonResult.getData());
         //将map中的对象转成json字符串后再进行入参，get不行，post可以用~~~
@@ -50,7 +50,7 @@ public class PaymentController {
         stringMap.put("order",JSON.toJSONString(order));
         CommonResult<String> stringCommonResult1 = paymentFeignService.complexTwo1000(stringMap);
         LOGGER.info(stringCommonResult1.getData());
-        //使用payment和order综合类进行传参,可以正确传参
+        //使用payment和order综合类进行传参,post可以正确传参
         PaymentAndOrder paymentAndOrder = new PaymentAndOrder(payment, order);
         CommonResult<PaymentAndOrder> paymentAndOrderCommonResult = paymentFeignService.complexTwo1001(paymentAndOrder);
         LOGGER.info("----------->>>>" + paymentAndOrderCommonResult.getData().toString());

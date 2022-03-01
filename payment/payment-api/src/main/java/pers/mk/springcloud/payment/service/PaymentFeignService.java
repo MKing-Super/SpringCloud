@@ -29,8 +29,8 @@ public interface PaymentFeignService {
     @GetMapping("/payment/two")
     CommonResult<Payment> two(@RequestParam("id") Integer id,@RequestParam("serial") String serial);
 
-    @GetMapping("/payment/complex/two")
-    CommonResult<String> complexTwo(@RequestParam Map<String,Object> map);
+    @PostMapping("/payment/complex/two")
+    CommonResult<String> complexTwo(@RequestBody Map<String,Object> map);
 
     @PostMapping("/payment/complex/two1000")
     CommonResult<String> complexTwo1000(@RequestBody Map<String,Object> map);

@@ -89,10 +89,10 @@ public class PaymentController {
         return new CommonResult<Payment>(200,"emm",payment);
     }
 
-    @GetMapping("/complex/two")
-    public CommonResult<String> complexTwo(Map<String,Object> map){
-        Payment payment = (Payment) map.get("payment");
-        Order order = (Order) map.get("order");
+    @PostMapping("/complex/two")
+    public CommonResult<String> complexTwo(@RequestBody Map<String,Object> map){
+        Payment payment = JSON.parseObject(JSON.toJSONString(map.get("payment")), Payment.class);
+        Order order = JSON.parseObject(JSON.toJSONString(map.get("order")), Order.class);
         String s = JSON.toJSONString(payment);
         String s1 = JSON.toJSONString(order);
         return new CommonResult<String>(200,"rrrrr",s + s1);
