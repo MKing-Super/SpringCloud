@@ -68,10 +68,13 @@ public class PaymentController {
         PaymentAndOrder paymentAndOrder = new PaymentAndOrder(payment , order);
         CommonResult<PaymentAndOrder> paymentAndOrderCommonResult = paymentFeignService.complexTwo1001(paymentAndOrder);
         System.out.println(paymentAndOrderCommonResult);
+        String s = JSON.toJSONString(paymentAndOrderCommonResult.getData());
 
         //getmapping 与 requestbody 入参为实例对象的时候，注解不能同时使用
 //        CommonResult<PaymentAndOrder> test = paymentFeignService.test(paymentAndOrder);
 
+
+        model.addAttribute("textarea",s);
         return "/index";
     }
 }
