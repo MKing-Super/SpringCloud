@@ -116,6 +116,17 @@ public class PaymentController {
         return new CommonResult<PaymentAndOrder>(200,"rrrrr",new PaymentAndOrder(payment,order));
     }
 
+    @Deprecated
+    @GetMapping("/test")
+    public CommonResult<PaymentAndOrder> test(@RequestBody PaymentAndOrder paymentAndOrder){
+        Order order = paymentAndOrder.getOrder();
+        Payment payment = paymentAndOrder.getPayment();
+        order.setUserName("这里是test");
+        payment.setSerial("zhe li shi test");
+
+        return new CommonResult<PaymentAndOrder>(200,"mkmkmk",paymentAndOrder);
+    }
+
     @GetMapping("/timeout")
     public String timeout(){
         try {

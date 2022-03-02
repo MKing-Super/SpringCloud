@@ -37,4 +37,10 @@ public interface PaymentFeignService {
 
     @PostMapping("/payment/complex/two1001")
     CommonResult<PaymentAndOrder> complexTwo1001(@RequestBody PaymentAndOrder paymentAndOrder);
+
+    @Deprecated
+    @GetMapping("/payment/test")
+    CommonResult<PaymentAndOrder> test(@RequestBody PaymentAndOrder paymentAndOrder);
+
+
 }

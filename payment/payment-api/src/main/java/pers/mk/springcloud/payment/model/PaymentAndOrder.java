@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @Description: 支付和订单综合
  * @Author: kun.ma
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentAndOrder {
+public class PaymentAndOrder implements Serializable {
     private Payment payment;
     private Order order;
 }
