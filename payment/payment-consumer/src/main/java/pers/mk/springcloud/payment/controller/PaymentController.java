@@ -6,13 +6,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pers.mk.springcloud.payment.model.CommonResult;
 import pers.mk.springcloud.payment.model.Order;
 import pers.mk.springcloud.payment.model.Payment;
 import pers.mk.springcloud.payment.model.PaymentAndOrder;
 import pers.mk.springcloud.payment.service.OrderFeignService;
 import pers.mk.springcloud.payment.service.PaymentFeignService;
+import pers.mk.springcloud.payment.wrapper.PaymentComplexWrapper;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -76,5 +80,16 @@ public class PaymentController {
 
         model.addAttribute("textarea",s);
         return "/index";
+    }
+
+
+    @RequestMapping(value = "/wrapper/complex",method = RequestMethod.GET)
+    @ResponseBody
+    public String wrapperComplex(){
+        Payment payment = new Payment(new Long(1), "666");
+        Order order = new Order(4324, "superadmin", "123456");
+        PaymentComplexWrapper paymentComplexWrapper = new PaymentComplexWrapper(payment, order);
+        String complex = paymentFeignService.complex(paymentComplexWrapper);
+        return complex;
     }
 }

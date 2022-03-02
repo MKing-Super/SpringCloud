@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import pers.mk.springcloud.payment.model.CommonResult;
 import pers.mk.springcloud.payment.model.Order;
 import pers.mk.springcloud.payment.model.Payment;
 import pers.mk.springcloud.payment.model.PaymentAndOrder;
 import pers.mk.springcloud.payment.service.PaymentService;
+import pers.mk.springcloud.payment.wrapper.PaymentComplexWrapper;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -140,5 +142,13 @@ public class PaymentController {
     @GetMapping("/payment/zipkin")
     public String paymentZipkin(){
         return "我是 zipkin";
+    }
+
+    @RequestMapping(value = "/complex",method = RequestMethod.POST)
+    public String complex(@RequestBody PaymentComplexWrapper paymentComplexWrapper){
+        Payment payment = paymentComplexWrapper.getPayment();
+        Order order = paymentComplexWrapper.getOrder();
+        String s = JSON.toJSONString(payment) + JSON.toJSONString(order);
+        return s;
     }
 }
