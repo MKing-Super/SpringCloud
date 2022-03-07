@@ -56,5 +56,26 @@ public interface PaymentFeignService {
     String complex(@RequestBody PaymentComplexWrapper paymentComplexWrapper);
 
 
+    @GetMapping("/payment/param/test")
+    String paramTest(@RequestParam("payment") Payment payment, @RequestParam("order") Order order);
 
+    @GetMapping("/payment/param/test0")
+    Integer[] paramTest0(@RequestParam("dataIds") Integer[] dataIds);
+
+
+    @GetMapping("/payment/param/test1")
+    Integer[] paramTest1(@RequestParam("brand") String brand, @RequestParam("actId") Integer actId, @RequestParam("seriesIds") Integer[] seriesIds, @RequestParam("orgIds") Integer[] orgIds);
+
+    @GetMapping("/payment/param/test2")
+    Integer paramTest1(@RequestParam("brand") String brand, @RequestParam("actId") Integer actId);
+
+    @PostMapping("/payment/param/test1")
+    CommonResult<Payment> paramTest1(@RequestBody Payment payment);
+
+    @PostMapping("/payment/param/test4")
+    CommonResult<Payment> paramTest4(@RequestBody Payment payment,@RequestParam("str") String str);
+
+
+    @PostMapping("/payment/param/test5")
+    String paramTest5(@RequestBody Payment payment, @RequestParam("order") Order order);
 }

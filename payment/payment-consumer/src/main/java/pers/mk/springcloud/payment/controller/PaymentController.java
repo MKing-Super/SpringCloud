@@ -92,4 +92,68 @@ public class PaymentController {
         String complex = paymentFeignService.complex(paymentComplexWrapper);
         return complex;
     }
+
+    @RequestMapping(value = "/param/test",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest(){
+        Payment payment = new Payment(new Long(1), "666");
+        Order order = new Order(4324, "superadmin", "123456");
+        String s = paymentFeignService.paramTest(payment, order);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test0",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest0(){
+        Integer data[] = {1, 2, 4, 545, 11, 32, 13131, 4444};
+        Integer[] integers = paymentFeignService.paramTest0(data);
+        String s = JSON.toJSONString(integers);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test1",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest1(){
+        Integer data[] = {1, 2, 4, 545, 11, 32, 13131, 4444};
+        String str = "422423432";
+        Integer[] integers = paymentFeignService.paramTest1(str,222,data,data);
+        String s = JSON.toJSONString(integers);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test2",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest2(){
+        String str = "422423432";
+        Integer integers = paymentFeignService.paramTest1(str,222);
+        return integers.toString();
+    }
+
+    @RequestMapping(value = "/param/test3",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest3(){
+        Payment payment = new Payment(new Long(1), "666");
+        CommonResult testpost = paymentFeignService.paramTest1(payment);
+        String s = testpost.getData().toString();
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test4",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest4(){
+        Payment payment = new Payment(new Long(1), "666");
+        CommonResult testpost = paymentFeignService.paramTest4(payment,"水水水水是是");
+        String s = testpost.getData().toString();
+        return s;
+    }
+
+
+    @RequestMapping(value = "/param/test5",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest5(){
+        Payment payment = new Payment(new Long(1), "666");
+        Order order = new Order(4324, "FSELFJSDALFJS", "123456");
+        String s = paymentFeignService.paramTest5(payment, order);
+        return s;
+    }
 }

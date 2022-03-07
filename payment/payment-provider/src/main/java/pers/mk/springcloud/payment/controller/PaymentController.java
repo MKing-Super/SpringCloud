@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pers.mk.springcloud.payment.model.CommonResult;
 import pers.mk.springcloud.payment.model.Order;
@@ -118,7 +119,6 @@ public class PaymentController {
         return new CommonResult<PaymentAndOrder>(200,"rrrrr",new PaymentAndOrder(payment,order));
     }
 
-    @Deprecated
     @GetMapping("/test")
     public CommonResult<PaymentAndOrder> test(@RequestBody PaymentAndOrder paymentAndOrder){
         Order order = paymentAndOrder.getOrder();
@@ -150,5 +150,47 @@ public class PaymentController {
         Order order = paymentComplexWrapper.getOrder();
         String s = JSON.toJSONString(payment) + JSON.toJSONString(order);
         return s;
+    }
+
+    @Deprecated
+    @GetMapping("/param/test")
+    public String paramTest(@RequestParam("payment") Payment payment, @RequestParam("order") Order order){
+        order.setUserName("这里是test");
+        payment.setSerial("zhe li shi test");
+        return payment.toString() + order.toString();
+    }
+
+    @GetMapping("/param/test0")
+    public Integer[] paramTest0(@RequestParam("dataIds") Integer[] dataIds){
+        return dataIds;
+    }
+
+    @GetMapping("/param/test1")
+    public Integer[] paramTest1(@RequestParam("brand") String brand, @RequestParam("actId") Integer actId, @RequestParam("seriesIds") Integer[] seriesIds, @RequestParam("orgIds") Integer[] orgIds){
+        return seriesIds;
+    }
+
+    @GetMapping("/param/test2")
+    public Integer paramTest2(@RequestParam("brand") String brand, @RequestParam("actId") Integer actId){
+        return actId;
+    }
+
+    @PostMapping("/param/test1")
+    public CommonResult<Payment> paramTest1(@RequestBody Payment payment){
+        payment.setSerial("我是更过后的名字，测试成功");
+        return new CommonResult<>(200,"测试成功",payment);
+    }
+
+    @PostMapping("/param/test4")
+    public CommonResult<Payment> paramTest4(@RequestBody Payment payment,@RequestParam("str") String str){
+        payment.setSerial(str);
+        return new CommonResult<>(200,"测试成功",payment);
+    }
+
+    @Deprecated
+    @PostMapping("/param/test5")
+    public String paramTest5(@RequestBody Payment payment, @RequestParam("order") Order order){
+        payment.setSerial(order.getUserName());
+        return payment.toString();
     }
 }
