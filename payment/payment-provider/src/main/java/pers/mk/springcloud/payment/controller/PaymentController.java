@@ -193,4 +193,44 @@ public class PaymentController {
         payment.setSerial(order.getUserName());
         return payment.toString();
     }
+
+    @PostMapping("/param/test6")
+    public String paramTest6(@RequestBody List<Payment> list){
+        String s = JSON.toJSONString(list);
+        return s;
+    }
+
+    @GetMapping("/param/test7")
+    public String paramTest7(@RequestParam("list") List<Payment> list){
+        String s = JSON.toJSONString(list);
+        return s;
+    }
+
+    @GetMapping("/param/test8")
+    public String paramTest8(@RequestParam("list") List<Integer> list){
+        String s = JSON.toJSONString(list);
+        return s;
+    }
+
+    @PostMapping("/param/test9")
+    public String paramTest9(@RequestParam("id") Integer id,@RequestBody List<Payment> list){
+        String s = JSON.toJSONString(list);
+        return s + id;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

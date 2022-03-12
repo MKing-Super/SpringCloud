@@ -16,6 +16,7 @@ import pers.mk.springcloud.payment.model.Payment;
 import pers.mk.springcloud.payment.model.PaymentAndOrder;
 import pers.mk.springcloud.payment.wrapper.PaymentComplexWrapper;
 
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -75,7 +76,24 @@ public interface PaymentFeignService {
     @PostMapping("/payment/param/test4")
     CommonResult<Payment> paramTest4(@RequestBody Payment payment,@RequestParam("str") String str);
 
-
     @PostMapping("/payment/param/test5")
     String paramTest5(@RequestBody Payment payment, @RequestParam("order") Order order);
+
+    @PostMapping("/payment/param/test6")
+    String paramTest6(@RequestBody List<Payment> list);
+
+    @Deprecated
+    @GetMapping("/payment/param/test7")
+    String paramTest7(@RequestParam("list") List<Payment> list);
+
+    @GetMapping("/payment/param/test8")
+    String paramTest8(@RequestParam("list") List<Integer> list);
+
+    @PostMapping("/payment/param/test9")
+    String paramTest9(@RequestParam("id") Integer id,@RequestBody List<Payment> list);
+
+
+
+
+
 }

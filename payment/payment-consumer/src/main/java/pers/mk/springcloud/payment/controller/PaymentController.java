@@ -19,6 +19,7 @@ import pers.mk.springcloud.payment.service.PaymentFeignService;
 import pers.mk.springcloud.payment.wrapper.PaymentComplexWrapper;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
@@ -156,4 +157,56 @@ public class PaymentController {
         String s = paymentFeignService.paramTest5(payment, order);
         return s;
     }
+
+    @RequestMapping(value = "/param/test6",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest6(){
+        ArrayList<Payment> list = new ArrayList<>();
+        list.add(new Payment(new Long(1), "666"));
+        list.add(new Payment(new Long(2), "sfs"));
+        list.add(new Payment(new Long(333), "gdgggg"));
+        String s = paymentFeignService.paramTest6(list);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test7",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest7(){
+        ArrayList<Payment> list = new ArrayList<>();
+        list.add(new Payment(new Long(1), "666"));
+        list.add(new Payment(new Long(2), "sfs"));
+        list.add(new Payment(new Long(333), "gdgggg"));
+        String s = paymentFeignService.paramTest7(list);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test8",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest8(){
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(111);
+        integers.add(22222);
+        integers.add(113333331);
+        String s = paymentFeignService.paramTest8(integers);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test9",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest9(){
+        ArrayList<Payment> list = new ArrayList<>();
+        list.add(new Payment(new Long(1), "666"));
+        list.add(new Payment(new Long(2), "sfs"));
+        list.add(new Payment(new Long(333), "gdgggg"));
+        String s = paymentFeignService.paramTest9(234,list);
+        return s;
+    }
+
+
+
+
+
+
+
+
 }
