@@ -202,7 +202,31 @@ public class PaymentController {
         return s;
     }
 
+    @RequestMapping(value = "/param/test10",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest10(){
+        Payment payment = new Payment(new Long(1), "666");
+        Order order = new Order(4324, "FSELFJSDALFJS", "123456");
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("payment",payment);
+        map.put("order",order);
+        map.put("integer",5656777);
+        String s = paymentFeignService.paramTest10(map);
+        return s;
+    }
 
+    @RequestMapping(value = "/param/test11",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest11(){
+        Payment payment = new Payment(new Long(1), "666");
+        Order order = new Order(4324, "FSELFJSDALFJS", "123456");
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("payment",payment);
+        map.put("order",order);
+        map.put("integer",5656777);
+        String s = paymentFeignService.paramTest11(map);
+        return s;
+    }
 
 
 

@@ -218,8 +218,20 @@ public class PaymentController {
         return s + id;
     }
 
+    @PostMapping("/param/test10")
+    public String paramTest10(@RequestBody Map<String,Object> map){
+        System.out.println(map.toString());
+        String s = JSON.toJSONString(map);
+        return s;
+    }
 
 
+    @RequestMapping(value = "/param/test11",method = RequestMethod.GET)
+    public String paramTest11(@RequestParam("map") Map<String,Object> map){
+        System.out.println(map.toString());
+        String s = JSON.toJSONString(map);
+        return s;
+    }
 
 
 

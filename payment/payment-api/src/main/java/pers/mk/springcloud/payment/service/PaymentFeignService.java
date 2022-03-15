@@ -92,6 +92,16 @@ public interface PaymentFeignService {
     @PostMapping("/payment/param/test9")
     String paramTest9(@RequestParam("id") Integer id,@RequestBody List<Payment> list);
 
+    @PostMapping("/payment/param/test10")
+    String paramTest10(@RequestBody Map<String,Object> map);
+
+    @Deprecated
+    @RequestMapping(value = "/payment/param/test11",method = RequestMethod.GET)
+    String paramTest11(@RequestParam("map") Map<String,Object> map);
+
+
+
+
 
 
 
