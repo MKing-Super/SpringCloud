@@ -57,12 +57,12 @@ public interface PaymentFeignService {
     String complex(@RequestBody PaymentComplexWrapper paymentComplexWrapper);
 
 
+    @Deprecated
     @GetMapping("/payment/param/test")
     String paramTest(@RequestParam("payment") Payment payment, @RequestParam("order") Order order);
 
     @GetMapping("/payment/param/test0")
     Integer[] paramTest0(@RequestParam("dataIds") Integer[] dataIds);
-
 
     @GetMapping("/payment/param/test1")
     Integer[] paramTest1(@RequestParam("brand") String brand, @RequestParam("actId") Integer actId, @RequestParam("seriesIds") Integer[] seriesIds, @RequestParam("orgIds") Integer[] orgIds);
@@ -76,6 +76,7 @@ public interface PaymentFeignService {
     @PostMapping("/payment/param/test4")
     CommonResult<Payment> paramTest4(@RequestBody Payment payment,@RequestParam("str") String str);
 
+    @Deprecated
     @PostMapping("/payment/param/test5")
     String paramTest5(@RequestBody Payment payment, @RequestParam("order") Order order);
 
@@ -99,6 +100,7 @@ public interface PaymentFeignService {
     @RequestMapping(value = "/payment/param/test11",method = RequestMethod.GET)
     String paramTest11(@RequestParam("map") Map<String,Object> map);
 
+    @Deprecated
     @RequestMapping(value = "/payment/param/test12",method = RequestMethod.GET)
     String paramTest12(@RequestParam("arr") Payment[] arr);
 
@@ -117,6 +119,12 @@ public interface PaymentFeignService {
                        @RequestParam("list0") List<String> list0,
                        @RequestBody Payment payment);
 
+    @Deprecated
+    @RequestMapping(value = "/payment/param/test17",method = RequestMethod.GET)
+    String paramTest17(@RequestParam("map") Map<String,Object> map);
 
+    @Deprecated
+    @RequestMapping(value = "/payment/param/test18",method = RequestMethod.GET)
+    String paramTest18(@RequestParam("map") Map<String,Integer> map);
 
 }

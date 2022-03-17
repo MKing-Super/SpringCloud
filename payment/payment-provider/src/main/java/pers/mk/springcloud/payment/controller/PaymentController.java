@@ -269,9 +269,19 @@ public class PaymentController {
         return  s + s1 + s2 + s3;
     }
 
+    @RequestMapping(value = "/param/test17",method = RequestMethod.GET)
+    public String paramTest17(@RequestParam("map") Map<String,Object> map){
+        System.out.println(map.toString());
+        String s = JSON.toJSONString(map);
+        return s;
+    }
 
-
-
+    @RequestMapping(value = "/param/test18",method = RequestMethod.GET)
+    public String paramTest18(@RequestParam("map") Map<String,Integer> map){
+        System.out.println(map.toString());
+        String s = JSON.toJSONString(map);
+        return s;
+    }
 
 
 

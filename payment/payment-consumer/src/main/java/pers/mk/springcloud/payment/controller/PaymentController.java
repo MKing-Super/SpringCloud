@@ -294,9 +294,27 @@ public class PaymentController {
         return s;
     }
 
+    @RequestMapping(value = "/param/test17",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest17(){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("aaaa",1);
+        map.put("ssss",4324234);
+        map.put("fffff",77777);
+        String s = paymentFeignService.paramTest17(map);
+        return s;
+    }
 
-
-
+    @RequestMapping(value = "/param/test18",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest18(){
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("aaaa",1);
+        map.put("ssss",4324234);
+        map.put("fffff",77777);
+        String s = paymentFeignService.paramTest18(map);
+        return s;
+    }
 
 
 
