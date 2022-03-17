@@ -21,6 +21,7 @@ import pers.mk.springcloud.payment.service.PaymentService;
 import pers.mk.springcloud.payment.wrapper.PaymentComplexWrapper;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -283,6 +284,18 @@ public class PaymentController {
         return s;
     }
 
+    @RequestMapping(value = "/param/test19",method = RequestMethod.GET)
+    public String paramTest19(@RequestParam("date") Date date){
+        String s = date.toString();
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test20")
+    public String paramTest20(@RequestParam("date") Date date,@RequestBody Payment payment){
+        String s = date.toString();
+        String s1 = payment.toString();
+        return s + s1;
+    }
 
 
 }

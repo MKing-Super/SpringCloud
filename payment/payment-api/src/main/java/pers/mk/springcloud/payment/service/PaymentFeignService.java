@@ -16,6 +16,7 @@ import pers.mk.springcloud.payment.model.Payment;
 import pers.mk.springcloud.payment.model.PaymentAndOrder;
 import pers.mk.springcloud.payment.wrapper.PaymentComplexWrapper;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -59,26 +60,33 @@ public interface PaymentFeignService {
 
     @Deprecated
     @GetMapping("/payment/param/test")
-    String paramTest(@RequestParam("payment") Payment payment, @RequestParam("order") Order order);
+    String paramTest(@RequestParam("payment") Payment payment,
+                     @RequestParam("order") Order order);
 
     @GetMapping("/payment/param/test0")
     Integer[] paramTest0(@RequestParam("dataIds") Integer[] dataIds);
 
     @GetMapping("/payment/param/test1")
-    Integer[] paramTest1(@RequestParam("brand") String brand, @RequestParam("actId") Integer actId, @RequestParam("seriesIds") Integer[] seriesIds, @RequestParam("orgIds") Integer[] orgIds);
+    Integer[] paramTest1(@RequestParam("brand") String brand,
+                         @RequestParam("actId") Integer actId,
+                         @RequestParam("seriesIds") Integer[] seriesIds,
+                         @RequestParam("orgIds") Integer[] orgIds);
 
     @GetMapping("/payment/param/test2")
-    Integer paramTest1(@RequestParam("brand") String brand, @RequestParam("actId") Integer actId);
+    Integer paramTest1(@RequestParam("brand") String brand,
+                       @RequestParam("actId") Integer actId);
 
     @PostMapping("/payment/param/test1")
     CommonResult<Payment> paramTest1(@RequestBody Payment payment);
 
     @PostMapping("/payment/param/test4")
-    CommonResult<Payment> paramTest4(@RequestBody Payment payment,@RequestParam("str") String str);
+    CommonResult<Payment> paramTest4(@RequestBody Payment payment,
+                                     @RequestParam("str") String str);
 
     @Deprecated
     @PostMapping("/payment/param/test5")
-    String paramTest5(@RequestBody Payment payment, @RequestParam("order") Order order);
+    String paramTest5(@RequestBody Payment payment,
+                      @RequestParam("order") Order order);
 
     @PostMapping("/payment/param/test6")
     String paramTest6(@RequestBody List<Payment> list);
@@ -91,7 +99,8 @@ public interface PaymentFeignService {
     String paramTest8(@RequestParam("list") List<Integer> list);
 
     @PostMapping("/payment/param/test9")
-    String paramTest9(@RequestParam("id") Integer id,@RequestBody List<Payment> list);
+    String paramTest9(@RequestParam("id") Integer id,
+                      @RequestBody List<Payment> list);
 
     @PostMapping("/payment/param/test10")
     String paramTest10(@RequestBody Map<String,Object> map);
@@ -126,5 +135,12 @@ public interface PaymentFeignService {
     @Deprecated
     @RequestMapping(value = "/payment/param/test18",method = RequestMethod.GET)
     String paramTest18(@RequestParam("map") Map<String,Integer> map);
+
+    @RequestMapping(value = "/payment/param/test19",method = RequestMethod.GET)
+    String paramTest19(@RequestParam("date") Date date);
+
+    @RequestMapping(value = "/payment/param/test20")
+    String paramTest20(@RequestParam("date") Date date,@RequestBody Payment payment);
+
 
 }

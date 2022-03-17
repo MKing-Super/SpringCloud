@@ -20,6 +20,7 @@ import pers.mk.springcloud.payment.wrapper.PaymentComplexWrapper;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 @Controller
@@ -316,10 +317,19 @@ public class PaymentController {
         return s;
     }
 
+    @RequestMapping(value = "/param/test19",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest19(){
+        String s = paymentFeignService.paramTest19(new Date());
+        return s;
+    }
 
-
-
-
+    @RequestMapping(value = "/param/test20",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest20(){
+        String s = paymentFeignService.paramTest20(new Date(),new Payment(new Long(1), "666"));
+        return s;
+    }
 
 
 
