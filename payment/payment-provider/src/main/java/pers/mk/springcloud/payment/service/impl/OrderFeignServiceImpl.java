@@ -1,8 +1,8 @@
 package pers.mk.springcloud.payment.service.impl;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pers.mk.springcloud.payment.model.Order;
 import pers.mk.springcloud.payment.service.OrderFeignService;
 
 import java.util.concurrent.TimeUnit;
@@ -18,9 +18,7 @@ public class OrderFeignServiceImpl implements OrderFeignService {
 
 
     @Override
-    @GetMapping("/order/timeout")
     public String timeout(){
-
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
@@ -28,4 +26,18 @@ public class OrderFeignServiceImpl implements OrderFeignService {
         }
         return "成功";
     }
+
+    @Override
+    public String test(String str, Order order) {
+        String s = order.toString();
+        return s + str;
+    }
+
+
+
+
+
+
+
+
 }
