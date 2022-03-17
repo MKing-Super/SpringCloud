@@ -228,6 +228,84 @@ public class PaymentController {
         return s;
     }
 
+    @RequestMapping(value = "/param/test12",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest12(){
+        Payment[] arr = {
+                new Payment(new Long(1), "666"),
+                new Payment(new Long(1222), "fsdfasf"),
+                new Payment(new Long(13333), "666eeee")
+        };
+        String s = paymentFeignService.paramTest12(arr);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test13",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest13(){
+        Payment[] arr = {
+                new Payment(new Long(1), "666"),
+                new Payment(new Long(1222), "fsdfasf"),
+                new Payment(new Long(13333), "666eeee")
+        };
+        String s = paymentFeignService.paramTest13(arr);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test14",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest14(){
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(222);
+        list.add(4234);
+        list.add(555);
+        list.add(2266662);
+        String s = paymentFeignService.paramTest14(list);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test15",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest15(){
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(222);
+        list.add(4234);
+        list.add(555);
+        list.add(2266662);
+        String s = paymentFeignService.paramTest15(list);
+        return s;
+    }
+
+    @RequestMapping(value = "/param/test16",method = RequestMethod.GET)
+    @ResponseBody
+    public String paramTest16(){
+        Payment payment = new Payment(new Long(1222), "fsdfasf");
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(222);
+        list.add(4234);
+        list.add(555);
+        list.add(2266662);
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("sdgfsdfgsdf");
+        strings.add("ss");
+        strings.add("ggfgfg");
+        Long aLong = new Long(666);
+        String s = paymentFeignService.paramTest16(aLong,list,strings,payment);
+        return s;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -99,10 +99,23 @@ public interface PaymentFeignService {
     @RequestMapping(value = "/payment/param/test11",method = RequestMethod.GET)
     String paramTest11(@RequestParam("map") Map<String,Object> map);
 
+    @RequestMapping(value = "/payment/param/test12",method = RequestMethod.GET)
+    String paramTest12(@RequestParam("arr") Payment[] arr);
 
+    @RequestMapping(value = "/payment/param/test13",method = RequestMethod.POST)
+    String paramTest13(@RequestBody Payment[] arr);
 
+    @RequestMapping(value = "/payment/param/test14",method = RequestMethod.GET)
+    String paramTest14(@RequestParam("list") List<Integer> list);
 
+    @RequestMapping(value = "/payment/param/test15",method = RequestMethod.POST)
+    String paramTest15(@RequestBody List<Integer> list);
 
+    @RequestMapping(value = "/payment/param/test16",method = RequestMethod.POST)
+    String paramTest16(@RequestParam("ll") Long ll,
+                       @RequestParam("list") List<Integer> list,
+                       @RequestParam("list0") List<String> list0,
+                       @RequestBody Payment payment);
 
 
 

@@ -233,11 +233,41 @@ public class PaymentController {
         return s;
     }
 
+    @RequestMapping(value = "/param/test12",method = RequestMethod.GET)
+    public String paramTest12(@RequestParam("arr") Payment[] arr){
+        String s = arr.toString();
+        return s;
+    }
 
+    @RequestMapping(value = "/param/test13",method = RequestMethod.POST)
+    public String paramTest13(@RequestBody Payment[] arr){
+        String s = arr.toString();
+        return s;
+    }
 
+    @RequestMapping(value = "/param/test14",method = RequestMethod.GET)
+    public String paramTest14(@RequestParam("list") List<Integer> list) {
+        String s = list.toString();
+        return s;
+    }
 
+    @RequestMapping(value = "/param/test15",method = RequestMethod.POST)
+    public String paramTest15(@RequestBody List<Integer> list) {
+        String s = list.toString();
+        return s;
+    }
 
-
+    @RequestMapping(value = "/param/test16",method = RequestMethod.POST)
+    public String paramTest16(@RequestParam("ll") Long ll,
+                       @RequestParam("list") List<Integer> list,
+                       @RequestParam("list0") List<String> list0,
+                       @RequestBody Payment payment) {
+        String s1 = ll.toString();
+        String s2 = list.toString();
+        String s = list0.toString();
+        String s3 = payment.toString();
+        return  s + s1 + s2 + s3;
+    }
 
 
 
