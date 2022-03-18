@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 import pers.mk.springcloud.payment.model.Order;
 import pers.mk.springcloud.payment.service.OrderFeignService;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -30,14 +33,43 @@ public class OrderFeignServiceImpl implements OrderFeignService {
     @Override
     public String test(String str, Order order) {
         String s = order.toString();
+        System.out.println(s + str);
         return s + str;
     }
 
+    @Override
+    public String test0(String str) {
+        return str;
+    }
+
+    @Override
+    public String test1(Order order) {
+        return order.toString();
+    }
 
 
+    @Override
+    public String test2(Order order, String str) {
+        return order.toString() + str;
+    }
 
+    @Override
+    public String test3(String str, Integer param, List<String> list) {
+        return str + param + list.toString();
+    }
 
+    @Override
+    public String test4(String str) {
+        return str;
+    }
 
+    @Override
+    public String test5(BigDecimal bigDecimal) {
+        return bigDecimal.toString();
+    }
 
-
+    @Override
+    public String test6(Date date) {
+        return date.toString();
+    }
 }
