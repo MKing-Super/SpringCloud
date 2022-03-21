@@ -72,4 +72,22 @@ public class OrderFeignServiceImpl implements OrderFeignService {
     public String test6(Date date) {
         return date.toString();
     }
+
+    @Override
+    public String test7(Date date) {
+        if (date == null){
+            return null;
+        }else {
+            return date.toString();
+        }
+    }
+
+    @Override
+    public String test8(Date date) {
+        if (date == null){
+            return null;
+        }else {
+            return date.toString();
+        }
+    }
 }

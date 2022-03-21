@@ -98,6 +98,30 @@ public class OrderController {
         return result;
     }
 
+    @GetMapping("/test7")
+    @ResponseBody
+    public String test7(){
+        Date date = null;
+        String result = orderFeignService.test7(date);
+        if (result == null){
+            return "返回了null";
+        }else {
+            return result;
+        }
+    }
+
+    @GetMapping("/test8")
+    @ResponseBody
+    public String test8(){
+        Date date = null;
+        String result = orderFeignService.test8(date);
+        if (result == null){
+            return "返回了null";
+        }else {
+            return result;
+        }
+    }
+
 
 
 }

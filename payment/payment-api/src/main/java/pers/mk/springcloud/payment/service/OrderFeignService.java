@@ -56,4 +56,11 @@ public interface OrderFeignService {
     @RequestMapping(value = "/orderService/test6")
     String test6(@RequestParam("date") Date date);
 
+    @RequestMapping(value = "/orderService/test7")
+    String test7(@RequestParam(value = "date",required = false) Date date);
+
+    @Deprecated
+    @RequestMapping(value = "/orderService/test8")
+    String test8(@RequestParam(value = "date",required = true) Date date);
+
 }
