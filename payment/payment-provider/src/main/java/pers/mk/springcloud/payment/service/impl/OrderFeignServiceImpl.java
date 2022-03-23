@@ -90,4 +90,27 @@ public class OrderFeignServiceImpl implements OrderFeignService {
             return date.toString();
         }
     }
+
+    @Override
+    public String test9(String str0, String str1, Integer integer) {
+        return str0 + str1 + integer;
+    }
+
+    @Override
+    public String test10(Order order) {
+        if (order == null){
+            return null;
+        }else {
+            return order.toString();
+        }
+    }
+
+    @Override
+    public String test11(Order order) {
+        if (order == null){
+            return null;
+        }else {
+            return order.toString();
+        }
+    }
 }

@@ -122,6 +122,38 @@ public class OrderController {
         }
     }
 
+    @GetMapping("/test9")
+    @ResponseBody
+    public String test9(){
+        String result = orderFeignService.test9("666","mkmk",9090);
+        if (result == null){
+            return "返回了null";
+        }else {
+            return result;
+        }
+    }
+
+    @GetMapping("/test10")
+    @ResponseBody
+    public String test10(){
+        String result = orderFeignService.test10(null);
+        if (result == null){
+            return "返回了null";
+        }else {
+            return result;
+        }
+    }
+
+    @GetMapping("/test11")
+    @ResponseBody
+    public String test11(){
+        String result = orderFeignService.test11(null);
+        if (result == null){
+            return "返回了null";
+        }else {
+            return result;
+        }
+    }
 
 
 }
