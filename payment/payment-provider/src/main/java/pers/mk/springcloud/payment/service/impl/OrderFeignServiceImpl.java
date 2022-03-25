@@ -113,4 +113,17 @@ public class OrderFeignServiceImpl implements OrderFeignService {
             return order.toString();
         }
     }
+
+    @Override
+    public String test12(Order order, List<String> list) {
+        String s = list.toString();
+        String s1 = order.toString();
+
+        return s + s1;
+    }
+
+    @Override
+    public String test13(List<String> list) {
+        return list.toString();
+    }
 }

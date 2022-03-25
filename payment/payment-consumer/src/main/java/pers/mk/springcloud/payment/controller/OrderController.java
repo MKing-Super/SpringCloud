@@ -9,8 +9,11 @@ import pers.mk.springcloud.payment.service.OrderFeignService;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Stack;
+import java.util.Vector;
 
 /**
  * @Description: TODO
@@ -153,6 +156,74 @@ public class OrderController {
         }else {
             return result;
         }
+    }
+
+    @GetMapping("/test12")
+    @ResponseBody
+    public String test12(){
+        Order order = new Order(666, "马坤", "uiojns");
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("111");
+        linkedList.add("222");
+        linkedList.add("333");
+        String s0 = orderFeignService.test12(order, linkedList);
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("111");
+        arrayList.add("222");
+        arrayList.add("333");
+        String s1 = orderFeignService.test12(order, arrayList);
+
+        Vector<String> vector = new Vector<>();
+        vector.add("111");
+        vector.add("222");
+        vector.add("333");
+        String s2 = orderFeignService.test12(order, vector);
+
+        Stack<String> stack = new Stack<>();
+        stack.add("111");
+        stack.add("222");
+        stack.add("333");
+        String s3 = orderFeignService.test12(order, stack);
+
+        return s0 + "\n" +
+                s1  + "\n" +
+                s2  + "\n" +
+                s3 ;
+    }
+
+    @GetMapping("/test13")
+    @ResponseBody
+    public String test13(){
+        Order order = new Order(666, "马坤", "uiojns");
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("111");
+        linkedList.add("222");
+        linkedList.add("333");
+        String s0 = orderFeignService.test13(linkedList);
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("111");
+        arrayList.add("222");
+        arrayList.add("333");
+        String s1 = orderFeignService.test13( arrayList);
+
+        Vector<String> vector = new Vector<>();
+        vector.add("111");
+        vector.add("222");
+        vector.add("333");
+        String s2 = orderFeignService.test13(vector);
+
+        Stack<String> stack = new Stack<>();
+        stack.add("111");
+        stack.add("222");
+        stack.add("333");
+        String s3 = orderFeignService.test13( stack);
+
+        return s0 + "\n" +
+                s1  + "\n" +
+                s2  + "\n" +
+                s3 ;
     }
 
 

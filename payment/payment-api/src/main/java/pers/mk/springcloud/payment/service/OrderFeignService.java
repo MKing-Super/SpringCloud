@@ -77,4 +77,11 @@ public interface OrderFeignService {
     @RequestMapping(value = "/orderService/test11")
     String test11(@RequestBody(required = false) Order order);
 
+    @RequestMapping(value = "/orderService/test12")
+    String test12(@RequestBody Order order,
+                  @RequestParam(value = "list",required = false) List<String> list);
+
+    @RequestMapping(value = "/orderService/test13")
+    String test13(@RequestBody List<String> list);
+
 }
