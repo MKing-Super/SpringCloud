@@ -1,14 +1,11 @@
 package pers.mk.springcloud.payment.service;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import pers.mk.springcloud.payment.model.Order;
 
 import java.math.BigDecimal;
@@ -83,5 +80,26 @@ public interface OrderFeignService {
 
     @RequestMapping(value = "/orderService/test13")
     String test13(@RequestBody List<String> list);
+
+    @RequestMapping(value = "/orderService/test14")
+    String test14(@RequestParam(value = "list",required = false) List<String> list);
+
+    @RequestMapping(value = "/orderService/test15")
+    String test15(@RequestBody List<String> list);
+
+    @RequestMapping(value = "/orderService/test16")
+    String test16(@RequestParam(value = "list",required = false) List<String> list);
+
+    @RequestMapping(value = "/orderService/test17")
+    String test17(@RequestParam(value = "list",required = false) List<String> list,
+                  @RequestParam(value = "integerList",required = false) List<Integer> integerList);
+
+    @RequestMapping(value = "/orderService/test18")
+    String test18(@RequestBody List<String> list,
+                  @RequestParam("str") String str,
+                  @RequestParam("num") Integer num);
+
+
+
 
 }

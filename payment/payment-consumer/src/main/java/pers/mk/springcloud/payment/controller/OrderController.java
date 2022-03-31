@@ -226,5 +226,74 @@ public class OrderController {
                 s3 ;
     }
 
+    @GetMapping("/test14")
+    @ResponseBody
+    public String test14() {
+        Order order = new Order(666, "马坤", "uiojns");
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("111");
+        linkedList.add("222");
+        linkedList.add("333");
+        String s0 = orderFeignService.test14(linkedList);
+
+        return s0;
+    }
+
+    @GetMapping("/test15")
+    @ResponseBody
+    public String test15() {
+        Order order = new Order(666, "马坤", "uiojns");
+        LinkedList<String> linkedList = new LinkedList<>();
+        for (int i = 0 ; i < 1000 ; i++){
+            linkedList.add(i + "" + i + "" + i + "||");
+        }
+        String s0 = orderFeignService.test15(linkedList);
+
+        return s0;
+    }
+
+    @GetMapping("/test16")
+    @ResponseBody
+    public String test16() {
+        Order order = new Order(666, "马坤", "uiojns");
+        LinkedList<String> linkedList = new LinkedList<>();
+        for (int i = 0 ; i < 1000 ; i++){
+            linkedList.add(i + "" + i + "" + i + "||");
+        }
+        String s0 = orderFeignService.test16(linkedList);
+
+        return s0;
+    }
+
+    @GetMapping("/test17")
+    @ResponseBody
+    public String test17() {
+        Order order = new Order(666, "马坤", "uiojns");
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("111");
+        linkedList.add("222");
+        linkedList.add("333");
+        ArrayList<Integer> strings = new ArrayList<>();
+        strings.add(222);
+        strings.add(4444);
+        strings.add(466546);
+        String s0 = orderFeignService.test17(linkedList,strings);
+
+        return s0;
+    }
+
+    @GetMapping("/test18")
+    @ResponseBody
+    public String test18() {
+        Order order = new Order(666, "马坤", "uiojns");
+        LinkedList<String> linkedList = new LinkedList<>();
+        for (int i = 0 ; i < 1000 ; i++){
+            linkedList.add(i + "" + i + "" + i + "||");
+        }
+
+        String s0 = orderFeignService.test18(linkedList, "马坤", 3456);
+
+        return s0;
+    }
 
 }

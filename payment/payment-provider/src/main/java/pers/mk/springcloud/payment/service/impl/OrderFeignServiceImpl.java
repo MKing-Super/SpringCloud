@@ -1,6 +1,8 @@
 package pers.mk.springcloud.payment.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pers.mk.springcloud.payment.model.Order;
 import pers.mk.springcloud.payment.service.OrderFeignService;
@@ -54,7 +56,7 @@ public class OrderFeignServiceImpl implements OrderFeignService {
     }
 
     @Override
-    public String test3(String str, Integer param, List<String> list) {
+    public String test3(String str, Integer param, @RequestParam("list") List<String> list) {
         return str + param + list.toString();
     }
 
@@ -125,5 +127,33 @@ public class OrderFeignServiceImpl implements OrderFeignService {
     @Override
     public String test13(List<String> list) {
         return list.toString();
+    }
+
+    @Override
+    public String test14(@RequestParam(value = "list",required = false) List<String> list) {
+        return list.toString();
+    }
+
+    @Override
+    public String test15(@RequestBody List<String> list) {
+        return list.toString();
+    }
+
+    @Override
+    public String test16(@RequestParam(value = "list",required = false) List<String> list) {
+        return list.toString();
+    }
+
+    @Override
+    public String test17(@RequestParam(value = "list",required = false) List<String> list,
+                         @RequestParam(value = "integerList",required = false) List<Integer> integerList) {
+        return list.toString() + integerList.toString();
+    }
+
+    @Override
+    public String test18(@RequestBody List<String> list,
+                         String str,
+                         Integer num) {
+        return list.toString() + str + num;
     }
 }
