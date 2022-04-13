@@ -1,0 +1,47 @@
+package pers.mk.springcloud.payment.model;
+
+import java.io.Serializable;
+
+/**
+ * @Description: 订单
+ * @Author: kun.ma
+ * @Date: 2022/3/1 13:47
+ */
+public class Order implements Serializable {
+    private Integer id;
+    private String userName;
+    private String password;
+
+    public Order() {
+    }
+
+    public Order(Integer id, String userName, String password) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
