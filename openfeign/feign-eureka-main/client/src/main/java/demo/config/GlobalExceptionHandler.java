@@ -1,5 +1,6 @@
 package demo.config;
 
+import feign.FeignException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -51,5 +52,12 @@ public class GlobalExceptionHandler {
 //        e.printStackTrace();
 //        return "sql异常！";
 //    }
+
+    @ExceptionHandler({FeignException.class})
+    @ResponseBody
+    public String error(FeignException e){
+        e.printStackTrace();
+        return "openfeign调用错误！";
+    }
 
 }

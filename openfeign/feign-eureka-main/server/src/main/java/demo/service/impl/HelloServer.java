@@ -1,11 +1,14 @@
 package demo.service.impl;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -29,6 +32,15 @@ public class HelloServer {
                 .get(new Random().nextInt(instances.size()));
         return "Hello World: " + selectedInstance.getServiceId() + ":" + selectedInstance
                 .getHost() + ":" + selectedInstance.getPort();
+    }
+
+    @RequestMapping("/date")
+    public Date date(Date date){
+        if (date == null){
+            return new Date();
+        }else {
+            return DateUtils.addDays(date,2);
+        }
     }
 
 }

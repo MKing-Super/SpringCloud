@@ -2,6 +2,9 @@ package demo.api;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -15,5 +18,8 @@ public interface HelloClientFeign {
 
     @RequestMapping(value = "/index", method = GET)
     String hello();
+
+    @RequestMapping(value = "/date",method = GET)
+    Date date( Date date);
 
 }

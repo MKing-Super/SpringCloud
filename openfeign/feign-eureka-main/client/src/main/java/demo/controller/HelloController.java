@@ -1,10 +1,13 @@
 package demo.controller;
 
 import demo.api.HelloClientFeign;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Date;
 
 /**
  * @Description: TODO
@@ -25,10 +28,25 @@ public class HelloController {
         return client.hello();
     }
 
+    /**
+     * @describe: 模拟异常
+     * @param: []
+     * @return: java.lang.String
+     * @author: MK
+     * @version: 1.0.0
+     * @date 2023/2/22 11:01
+     **/
     @ResponseBody
     @RequestMapping("/exception")
     public String exception(){
         return 1/0 + "";
+    }
+
+    @ResponseBody
+    @RequestMapping("/date")
+    public Date date(){
+        Date date = client.date(new Date());
+        return DateUtils.addDays(date,1);
     }
 
 }
