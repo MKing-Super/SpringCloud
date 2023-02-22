@@ -13,15 +13,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
+@RequestMapping("/hello")
 public class HelloController {
 
     @Autowired
     HelloClientFeign client;
 
     @ResponseBody
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String hello() {
         return client.hello();
+    }
+
+    @ResponseBody
+    @RequestMapping("/exception")
+    public String exception(){
+        return 1/0 + "";
     }
 
 }

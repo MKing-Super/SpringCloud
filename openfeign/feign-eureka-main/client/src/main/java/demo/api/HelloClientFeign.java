@@ -10,10 +10,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  * @Author: kun.ma
  * @Date: 2023/2/17 11:15
  */
-@FeignClient(value = "HelloServer",path = "/")
+@FeignClient(value = "HelloServer",path = "/hello")
 public interface HelloClientFeign {
 
-    @RequestMapping(value = "/", method = GET)
+    @RequestMapping(value = "/index", method = GET)
     String hello();
 
 }

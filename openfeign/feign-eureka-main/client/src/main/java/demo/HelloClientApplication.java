@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author Spencer Gibb
@@ -15,7 +16,9 @@ public class HelloClientApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloClientApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(HelloClientApplication.class, args);
+        String id = run.getId();
+        System.out.println(id);
         System.out.println(">>>>>>>>>>>>>>>>>>>.");
     }
 

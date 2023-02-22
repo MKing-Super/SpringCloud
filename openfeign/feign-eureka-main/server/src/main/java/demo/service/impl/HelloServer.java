@@ -15,13 +15,14 @@ import java.util.Random;
  * @Date: 2023/2/17 11:26
  */
 @RestController
+@RequestMapping("/hello")
 public class HelloServer {
 
 
     @Autowired
     DiscoveryClient client;
 
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String hello() {
         List<ServiceInstance> instances = client.getInstances("HelloServer");
         ServiceInstance selectedInstance = instances
