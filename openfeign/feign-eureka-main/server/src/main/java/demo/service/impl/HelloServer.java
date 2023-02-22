@@ -37,7 +37,7 @@ public class HelloServer {
     @RequestMapping("/date")
     public Date date(Date date){
         if (date == null){
-            return new Date();
+            return null;
         }else {
             return DateUtils.addDays(date,2);
         }

@@ -46,7 +46,11 @@ public class HelloController {
     @RequestMapping("/date")
     public Date date(){
         Date date = client.date(new Date());
-        return DateUtils.addDays(date,1);
+        if (date == null){
+            return null;
+        }else {
+            return DateUtils.addDays(date,1);
+        }
     }
 
 }

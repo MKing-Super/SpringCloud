@@ -20,6 +20,6 @@ public interface HelloClientFeign {
     String hello();
 
     @RequestMapping(value = "/date",method = GET)
-    Date date( Date date);
+    Date date(@RequestParam("date") Date date);
 
 }
