@@ -1,6 +1,5 @@
 package demo.service.impl;
 
-import demo.api.HomeFeign;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -19,32 +18,18 @@ import java.util.Random;
  * @Date: 2023/2/17 11:26
  */
 @RestController
-@RequestMapping("/hello")
-public class HelloServer {
+@RequestMapping("/home")
+public class HomeServer {
 
 
     @Autowired
     DiscoveryClient client;
-    @Autowired
-    HomeFeign homeFeign;
 
-    @RequestMapping("/index")
-    public String hello() {
+    @RequestMapping("/client")
+    public String client() {
         List<ServiceInstance> instances = client.getInstances("HelloServer");
-        ServiceInstance selectedInstance = instances
-                .get(new Random().nextInt(instances.size()));
-        String client = homeFeign.client();
-        return "Hello World: " + selectedInstance.getServiceId() + ":" + selectedInstance
-                .getHost() + ":" + selectedInstance.getPort() + "---" + client;
-    }
-
-    @RequestMapping("/date")
-    public Date date(Date date){
-        if (date == null){
-            return null;
-        }else {
-            return DateUtils.addDays(date,2);
-        }
+        String description = client.description();
+        return description;
     }
 
 }
