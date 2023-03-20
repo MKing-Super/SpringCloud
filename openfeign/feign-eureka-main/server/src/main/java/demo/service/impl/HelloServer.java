@@ -1,12 +1,13 @@
 package demo.service.impl;
 
-import demo.api.HomeFeign;
+import com.alibaba.fastjson.JSONObject;
+import demo.feign.HelloFeign;
+import demo.feign.HomeFeign;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -20,7 +21,7 @@ import java.util.Random;
  */
 @RestController
 @RequestMapping("/hello")
-public class HelloServer {
+public class HelloServer implements HelloFeign {
 
 
     @Autowired
@@ -34,16 +35,19 @@ public class HelloServer {
         ServiceInstance selectedInstance = instances
                 .get(new Random().nextInt(instances.size()));
         String client = homeFeign.client();
-        return "Hello World: " + selectedInstance.getServiceId() + ":" + selectedInstance
-                .getHost() + ":" + selectedInstance.getPort() + "---" + client;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("HELLOSERVER", selectedInstance.getServiceId() + ":" + selectedInstance
+                .getHost() + ":" + selectedInstance.getPort());
+        jsonObject.put("HOMESERVER", client);
+        return jsonObject.toJSONString();
     }
 
     @RequestMapping("/date")
-    public Date date(Date date){
-        if (date == null){
+    public Date date(Date date) {
+        if (date == null) {
             return null;
-        }else {
-            return DateUtils.addDays(date,2);
+        } else {
+            return DateUtils.addDays(date, 2);
         }
     }
 

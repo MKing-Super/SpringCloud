@@ -1,5 +1,6 @@
 package demo.service.impl;
 
+import demo.feign.HomeFeign;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -19,7 +20,7 @@ import java.util.Random;
  */
 @RestController
 @RequestMapping("/home")
-public class HomeServer {
+public class HomeServer implements HomeFeign {
 
 
     @Autowired

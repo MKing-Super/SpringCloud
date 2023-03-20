@@ -1,4 +1,4 @@
-package demo.api;
+package demo.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,12 +9,15 @@ import java.util.Date;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
- * @Description: TODO
- * @Author: kun.ma
- * @Date: 2023/2/17 11:15
+ * @describe: TODO
+ * @Author MK
+ * @PackageName feign-eureka-main
+ * @Package demo.feign
+ * @Date 2023/3/20 17:57
+ * @Version 1.0
  */
 @FeignClient(value = "HelloServer",path = "/hello")
-public interface HelloClientFeign {
+public interface HelloFeign {
 
     @RequestMapping(value = "/index", method = GET)
     String hello();

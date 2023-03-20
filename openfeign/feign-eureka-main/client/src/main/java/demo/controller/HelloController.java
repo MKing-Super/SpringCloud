@@ -1,6 +1,6 @@
 package demo.controller;
 
-import demo.api.HelloClientFeign;
+import demo.feign.HelloFeign;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import java.util.Date;
 public class HelloController {
 
     @Autowired
-    HelloClientFeign client;
+    HelloFeign client;
 
     @ResponseBody
     @RequestMapping("/index")
@@ -38,18 +38,18 @@ public class HelloController {
      **/
     @ResponseBody
     @RequestMapping("/exception")
-    public String exception(){
-        return 1/0 + "";
+    public String exception() {
+        return 1 / 0 + "";
     }
 
     @ResponseBody
     @RequestMapping("/date")
-    public Date date(){
+    public Date date() {
         Date date = client.date(new Date());
-        if (date == null){
+        if (date == null) {
             return null;
-        }else {
-            return DateUtils.addDays(date,1);
+        } else {
+            return DateUtils.addDays(date, 1);
         }
     }
 

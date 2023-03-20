@@ -21,11 +21,13 @@
 	<modules>
 		<module>server</module>
 		<module>client</module>
+		<module>api</module>
 	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<fastjson.version>1.2.54</fastjson.version>
 	</properties>
 
 	<dependencyManagement>
@@ -36,6 +38,11 @@
 				<version>2021.0.0</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
