@@ -1,6 +1,9 @@
 package demo.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import demo.feign.HelloFeign;
+import demo.feign.HomeFeign;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +24,19 @@ public class HelloController {
 
     @Autowired
     HelloFeign client;
+    @Autowired
+    HomeFeign homeFeign;
 
     @ResponseBody
     @RequestMapping("/index")
     public String hello() {
-        return client.hello();
+        String mk = homeFeign.hello("MK");
+        String hello = client.hello();
+        JSONObject jsonObject = JSON.parseObject(hello);
+        Date date = client.date(new Date());
+        jsonObject.put("currTime",date);
+        jsonObject.put("name",mk);
+        return jsonObject.toJSONString();
     }
 
     /**
@@ -42,15 +53,5 @@ public class HelloController {
         return 1 / 0 + "";
     }
 
-    @ResponseBody
-    @RequestMapping("/date")
-    public Date date() {
-        Date date = client.date(new Date());
-        if (date == null) {
-            return null;
-        } else {
-            return DateUtils.addDays(date, 1);
-        }
-    }
 
 }

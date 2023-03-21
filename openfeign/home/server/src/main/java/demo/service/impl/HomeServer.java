@@ -33,4 +33,8 @@ public class HomeServer implements HomeFeign {
         return description;
     }
 
+    @Override
+    public String hello(String name) {
+        return "hello" + name;
+    }
 }

@@ -32,12 +32,9 @@ public class HelloServer implements HelloFeign {
     @RequestMapping("/index")
     public String hello() {
         List<ServiceInstance> instances = client.getInstances("HelloServer");
-        ServiceInstance selectedInstance = instances
-                .get(new Random().nextInt(instances.size()));
         String client = homeFeign.client();
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("HELLOSERVER", selectedInstance.getServiceId() + ":" + selectedInstance
-                .getHost() + ":" + selectedInstance.getPort());
+        jsonObject.put("HELLOSERVER", "Hello Server");
         jsonObject.put("HOMESERVER", client);
         return jsonObject.toJSONString();
     }
