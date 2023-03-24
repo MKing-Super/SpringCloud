@@ -19,22 +19,20 @@ import java.util.List;
 @RequestMapping("/home")
 public class HomeServer implements HomeFeign {
 
-
-    @Autowired
-    DiscoveryClient client;
     @Autowired
     WorldFeign worldFeign;
 
-    @RequestMapping("/client")
-    public String client() {
-        List<ServiceInstance> instances = client.getInstances("HelloServer");
-        String description = client.description();
-        return description;
+    @Override
+    public String hello() {
+        String world = worldFeign.hello();
+        String look = worldFeign.look();
+        String s = "home hello~ " + "||" + world + look;
+        return s;
     }
 
     @Override
-    public String hello(String name) {
-        String world = worldFeign.hello();
-        return "home hello~ " + name + world;
+    public String look() {
+        String look = worldFeign.run();
+        return "home look ~" + "||" + look;
     }
 }

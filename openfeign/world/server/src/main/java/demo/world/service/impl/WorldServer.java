@@ -20,9 +20,18 @@ public class WorldServer implements WorldFeign {
     @Autowired
     DiscoveryClient client;
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @Override
     public String hello() {
         return "world hello ~ ";
     }
 
+    @Override
+    public String look() {
+        return "world look ~ ";
+    }
+
+    @Override
+    public String run() {
+        return "run look ~ ";
+    }
 }

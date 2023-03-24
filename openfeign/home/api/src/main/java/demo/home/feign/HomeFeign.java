@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "HomeServer",path = "/home")
 public interface HomeFeign {
 
-    @RequestMapping(value = "/client",method = RequestMethod.GET)
-    String client();
-
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    String hello(@RequestParam("name") String name);
+    String hello();
+
+    @RequestMapping(value = "/look",method = RequestMethod.GET)
+    String look();
 
 }

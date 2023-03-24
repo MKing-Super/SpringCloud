@@ -26,13 +26,14 @@ public class HelloController {
     @ResponseBody
     @RequestMapping("/hello")
     public String hello() {
-        String mk = homeFeign.hello("MK");
+        String mk = homeFeign.hello();
+        String look = homeFeign.look();
 //        String hello = client.hello();
 //        JSONObject jsonObject = JSON.parseObject(hello);
 //        Date date = client.date(new Date());
 //        jsonObject.put("currTime",date);
 //        jsonObject.put("name",mk);
-        return mk;
+        return "main hello ~ " + "||" + mk + look;
     }
 
     /**

@@ -18,4 +18,11 @@ public interface WorldFeign {
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     String hello();
 
+
+    @RequestMapping(value = "/look",method = RequestMethod.GET)
+    String look();
+
+    @RequestMapping(value = "/run",method = RequestMethod.GET)
+    String run();
+
 }
