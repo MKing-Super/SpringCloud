@@ -1,16 +1,12 @@
 package demo.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import demo.feign.HelloFeign;
-import demo.feign.HomeFeign;
-import org.apache.commons.lang.time.DateUtils;
+
+import demo.home.feign.HomeFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Date;
 
 /**
  * @Description: TODO
@@ -23,20 +19,20 @@ import java.util.Date;
 public class HelloController {
 
     @Autowired
-    HelloFeign client;
+    HelloFeign helloFeign;
     @Autowired
     HomeFeign homeFeign;
 
     @ResponseBody
-    @RequestMapping("/index")
+    @RequestMapping("/hello")
     public String hello() {
         String mk = homeFeign.hello("MK");
-        String hello = client.hello();
-        JSONObject jsonObject = JSON.parseObject(hello);
-        Date date = client.date(new Date());
-        jsonObject.put("currTime",date);
-        jsonObject.put("name",mk);
-        return jsonObject.toJSONString();
+//        String hello = client.hello();
+//        JSONObject jsonObject = JSON.parseObject(hello);
+//        Date date = client.date(new Date());
+//        jsonObject.put("currTime",date);
+//        jsonObject.put("name",mk);
+        return mk;
     }
 
     /**

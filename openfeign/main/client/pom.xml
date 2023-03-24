@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.test</groupId>
-	<artifactId>home-server</artifactId>
+	<artifactId>main-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>home-server</name>
+	<name>main-client</name>
 	<description>Demo project for Spring Cloud</description>
 
 	<parent>
@@ -45,6 +45,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+
+
 
 		<!-- 链路追踪 -->
 		<dependency>
@@ -56,15 +62,15 @@
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.test</groupId>
-			<artifactId>home-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.test</groupId>
-			<artifactId>world-api</artifactId>
+			<artifactId>hello-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.test</groupId>
+			<artifactId>home-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -76,6 +82,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 		</plugins>
 	</build>
 
