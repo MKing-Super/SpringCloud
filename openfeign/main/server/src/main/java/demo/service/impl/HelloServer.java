@@ -2,7 +2,7 @@ package demo.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import demo.feign.HelloFeign;
-import demo.feign.HomeFeign;
+import demo.home.feign.HomeFeign;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @Description: TODO

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: HelloServer
+    name: MainServer
 
 server:
   port: 7111
